@@ -1,0 +1,57 @@
+name: Daylily
+options:
+  bundleIdPrefix: com.habitexperiments
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    PRODUCT_NAME: Daylily
+targets:
+  Daylily:
+    type: application
+    platform: iOS
+    sources:
+      - Daylily
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.habitexperiments.daylily
+        # Signing team is intentionally unset: a committed Team ID ties the repo to one
+        # Apple Developer account and breaks signing for anyone else who clones it.
+        # Xcode remembers your choice after you pick a team once in
+        # Signing & Capabilities; simulator builds need no team at all.
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Daylily
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+    scheme:
+      testTargets:
+        - DaylilyTests
+        - DaylilyUITests
+  DaylilyUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - DaylilyUITests
+    dependencies:
+      - target: Daylily
+    settings:
+      base:
+        PRODUCT_NAME: DaylilyUITests
+        PRODUCT_BUNDLE_IDENTIFIER: com.habitexperiments.daylily.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Daylily
+  DaylilyTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - DaylilyTests
+    dependencies:
+      - target: Daylily
+    settings:
+      base:
+        PRODUCT_NAME: DaylilyTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.habitexperiments.daylily.tests
+        GENERATE_INFOPLIST_FILE: YES

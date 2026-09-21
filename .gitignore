@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Xcode user-specific state (never shareable: contains username, opened files, window layout, paired device UDIDs)
+xcuserdata/
+*.xcuserstate
+
+# Build artifacts
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Signing material — never commit
+*.p12
+*.mobileprovision
+*.provisionprofile
+
+# Internal design notes — not published
+PROJECT.md

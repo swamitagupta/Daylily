@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02FBE0A42A47DB427352E4F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E518F2E2ACFF98F3C43008A5 /* RootView.swift */; };
+		2867787DEBECC1F1B2207874 /* CheckInReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */; };
+		2DABFE8F9B194C93F9858759 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A07283787C9F3CF8D31F26 /* InsightsView.swift */; };
+		36441A89060A43B63E6DC6ED /* TimelineEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */; };
+		411A261961426301C57D8C75 /* MigrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */; };
+		41C14B7CA74DF635DAFEFA0E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E140395AEBBAFB4287039E /* CheckInView.swift */; };
+		42F025D02136EC042ACE6613 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B460F5549D0601364D4D04A /* HomeView.swift */; };
+		526E181FB3764082A6AD5E11 /* ModelCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F998CBCB40884EB405AFC1 /* ModelCodableTests.swift */; };
+		5D8E42EF0DAFBAF16EC1D782 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8470E03D3ABB2B6CEE64544A /* PrivacyInfo.xcprivacy */; };
+		6AFCF4E4BCB32D402F2139BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D89468327F8FA8E0E72609 /* Assets.xcassets */; };
+		75BF22C4DBA9B3725E690BBA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2E2B86F7F28639FAEB1F /* Models.swift */; };
+		7AB51657DEEEA106C6CD2046 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B5A41C9FF4CF8D6058D48 /* LibraryView.swift */; };
+		86AE4C5E61BAA6D8CFA38771 /* DaylilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5E7ABA9D22ACA3045CD59 /* DaylilyApp.swift */; };
+		90C1E45D896F0C9BEB1F7427 /* FakeNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */; };
+		9920C8BFB6209EA9A24F15C5 /* TimelineEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99712D6DA9BBFA8637B45989 /* TimelineEngineTests.swift */; };
+		A4B6453C8C24A66EF38FC0EA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418C7622445700DE1E70D77 /* AppStore.swift */; };
+		A5BD1EFD0D4216AD896AA790 /* GraphReorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */; };
+		AD6BADF93F5E3DA679D37362 /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53808903CD1479F98A87D327 /* NotificationPresenter.swift */; };
+		BA1E410A750E612D1F485241 /* InsightsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EDE8595243E9539C55074 /* InsightsEngine.swift */; };
+		CDE4511AA53DBA9C78B9850E /* StatePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1CD2E32841DE832334A9F /* StatePersistence.swift */; };
+		DB0102B4E8DB9B8159E1B9E2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93C84F31C6E88D8969385ED /* Theme.swift */; };
+		DB62F1AF653D661F46D60177 /* InsightsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */; };
+		E01BCD456D93EE7040CB14E3 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B15AC9DF645FA742796870 /* Migrations.swift */; };
+		EA0FB1B0DC6E811E069ED071 /* BackupControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9BA1EEAD257B848B8AC47 /* BackupControls.swift */; };
+		EAAE4442B65FD55F85DECA08 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211CB47BD91F2ABE0B644B14 /* Components.swift */; };
+		EE739DA23BADF6B3062BED3E /* CheckInReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */; };
+		F116AA766DFD2E515E4DACDF /* AppStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B370D1CE7F27238F67A87C41 /* AppStoreTests.swift */; };
+		F2F107F6E8D8FA7187BADE51 /* StatePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B1DF04E2E7D383B854679 /* StatePersistenceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2A8D93752103FB536B9BB48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1CF4A80222DCC3750E6EA38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E4DC8C60E8AA926858F3ED6;
+			remoteInfo = Daylily;
+		};
+		B4AC8DE25F8AD041F06E37B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1CF4A80222DCC3750E6EA38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E4DC8C60E8AA926858F3ED6;
+			remoteInfo = Daylily;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B460F5549D0601364D4D04A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		211CB47BD91F2ABE0B644B14 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsEngineTests.swift; sourceTree = "<group>"; };
+		2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEngine.swift; sourceTree = "<group>"; };
+		32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationsTests.swift; sourceTree = "<group>"; };
+		3368A0CBEFCFE6C06CD41793 /* DaylilyUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DaylilyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInReminder.swift; sourceTree = "<group>"; };
+		37E83AD27D7C340F9CBF8A5C /* Daylily.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Daylily.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA9BA1EEAD257B848B8AC47 /* BackupControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupControls.swift; sourceTree = "<group>"; };
+		53808903CD1479F98A87D327 /* NotificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
+		59D89468327F8FA8E0E72609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B6B5A41C9FF4CF8D6058D48 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		5DEC2E2B86F7F28639FAEB1F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		65F1CD2E32841DE832334A9F /* StatePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePersistence.swift; sourceTree = "<group>"; };
+		674B1DF04E2E7D383B854679 /* StatePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePersistenceTests.swift; sourceTree = "<group>"; };
+		78F998CBCB40884EB405AFC1 /* ModelCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCodableTests.swift; sourceTree = "<group>"; };
+		8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNotificationCenter.swift; sourceTree = "<group>"; };
+		82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInReminderTests.swift; sourceTree = "<group>"; };
+		8470E03D3ABB2B6CEE64544A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		84A07283787C9F3CF8D31F26 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphReorderUITests.swift; sourceTree = "<group>"; };
+		97E140395AEBBAFB4287039E /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
+		99712D6DA9BBFA8637B45989 /* TimelineEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEngineTests.swift; sourceTree = "<group>"; };
+		A0B15AC9DF645FA742796870 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		AAE822927E0C649DF459B812 /* DaylilyTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DaylilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD5E7ABA9D22ACA3045CD59 /* DaylilyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylilyApp.swift; sourceTree = "<group>"; };
+		B370D1CE7F27238F67A87C41 /* AppStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreTests.swift; sourceTree = "<group>"; };
+		B418C7622445700DE1E70D77 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		D28EDE8595243E9539C55074 /* InsightsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsEngine.swift; sourceTree = "<group>"; };
+		D93C84F31C6E88D8969385ED /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E518F2E2ACFF98F3C43008A5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2A9BA8673A975563436A0613 = {
+			isa = PBXGroup;
+			children = (
+				57363060108B4AC981800F77 /* Daylily */,
+				AF5D29F2CBF6CEDF3D08E659 /* DaylilyTests */,
+				68258570E5D94C52DD54371F /* DaylilyUITests */,
+				90B8F56E70C81DCA00D7A39B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		35B876CF550F48CFB6A8F0CD /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				3AA9BA1EEAD257B848B8AC47 /* BackupControls.swift */,
+				97E140395AEBBAFB4287039E /* CheckInView.swift */,
+				1B460F5549D0601364D4D04A /* HomeView.swift */,
+				84A07283787C9F3CF8D31F26 /* InsightsView.swift */,
+				5B6B5A41C9FF4CF8D6058D48 /* LibraryView.swift */,
+				E518F2E2ACFF98F3C43008A5 /* RootView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		50BEE1020B6B4E4108E155A4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B418C7622445700DE1E70D77 /* AppStore.swift */,
+				3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */,
+				211CB47BD91F2ABE0B644B14 /* Components.swift */,
+				D28EDE8595243E9539C55074 /* InsightsEngine.swift */,
+				A0B15AC9DF645FA742796870 /* Migrations.swift */,
+				5DEC2E2B86F7F28639FAEB1F /* Models.swift */,
+				53808903CD1479F98A87D327 /* NotificationPresenter.swift */,
+				65F1CD2E32841DE832334A9F /* StatePersistence.swift */,
+				D93C84F31C6E88D8969385ED /* Theme.swift */,
+				2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		57363060108B4AC981800F77 /* Daylily */ = {
+			isa = PBXGroup;
+			children = (
+				59D89468327F8FA8E0E72609 /* Assets.xcassets */,
+				ACD5E7ABA9D22ACA3045CD59 /* DaylilyApp.swift */,
+				8470E03D3ABB2B6CEE64544A /* PrivacyInfo.xcprivacy */,
+				50BEE1020B6B4E4108E155A4 /* Core */,
+				35B876CF550F48CFB6A8F0CD /* Screens */,
+			);
+			path = Daylily;
+			sourceTree = "<group>";
+		};
+		68258570E5D94C52DD54371F /* DaylilyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */,
+			);
+			path = DaylilyUITests;
+			sourceTree = "<group>";
+		};
+		90B8F56E70C81DCA00D7A39B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37E83AD27D7C340F9CBF8A5C /* Daylily.app */,
+				AAE822927E0C649DF459B812 /* DaylilyTests.xctest */,
+				3368A0CBEFCFE6C06CD41793 /* DaylilyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF5D29F2CBF6CEDF3D08E659 /* DaylilyTests */ = {
+			isa = PBXGroup;
+			children = (
+				B370D1CE7F27238F67A87C41 /* AppStoreTests.swift */,
+				82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */,
+				8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */,
+				22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */,
+				32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */,
+				78F998CBCB40884EB405AFC1 /* ModelCodableTests.swift */,
+				674B1DF04E2E7D383B854679 /* StatePersistenceTests.swift */,
+				99712D6DA9BBFA8637B45989 /* TimelineEngineTests.swift */,
+			);
+			path = DaylilyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F4E8F2F56D65349EAE5654C /* DaylilyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CBC25676F5AB7294DD4589 /* Build configuration list for PBXNativeTarget "DaylilyUITests" */;
+			buildPhases = (
+				9F08223719F710A6937CE445 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0E928597FEA8228B771016D /* PBXTargetDependency */,
+			);
+			name = DaylilyUITests;
+			packageProductDependencies = (
+			);
+			productName = DaylilyUITests;
+			productReference = 3368A0CBEFCFE6C06CD41793 /* DaylilyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		56AB47392630BBCA49109408 /* DaylilyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 480F4B21C5ABC07CD8E4AC43 /* Build configuration list for PBXNativeTarget "DaylilyTests" */;
+			buildPhases = (
+				67CCD76435FF982322846901 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43F6DD618FDFD639D124DCD3 /* PBXTargetDependency */,
+			);
+			name = DaylilyTests;
+			packageProductDependencies = (
+			);
+			productName = DaylilyTests;
+			productReference = AAE822927E0C649DF459B812 /* DaylilyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E4DC8C60E8AA926858F3ED6 /* Daylily */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8E9F72B134B849A96FDA0EC /* Build configuration list for PBXNativeTarget "Daylily" */;
+			buildPhases = (
+				9EB1947AAA2D03B20CE013D1 /* Sources */,
+				2E4B9AA35AE6604410ED207E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Daylily;
+			packageProductDependencies = (
+			);
+			productName = Daylily;
+			productReference = 37E83AD27D7C340F9CBF8A5C /* Daylily.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1CF4A80222DCC3750E6EA38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					1F4E8F2F56D65349EAE5654C = {
+						TestTargetID = 5E4DC8C60E8AA926858F3ED6;
+					};
+					5E4DC8C60E8AA926858F3ED6 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8B6875E4996BBE91466DB2E6 /* Build configuration list for PBXProject "Daylily" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2A9BA8673A975563436A0613;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 54;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E4DC8C60E8AA926858F3ED6 /* Daylily */,
+				56AB47392630BBCA49109408 /* DaylilyTests */,
+				1F4E8F2F56D65349EAE5654C /* DaylilyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2E4B9AA35AE6604410ED207E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AFCF4E4BCB32D402F2139BE /* Assets.xcassets in Resources */,
+				5D8E42EF0DAFBAF16EC1D782 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67CCD76435FF982322846901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116AA766DFD2E515E4DACDF /* AppStoreTests.swift in Sources */,
+				2867787DEBECC1F1B2207874 /* CheckInReminderTests.swift in Sources */,
+				90C1E45D896F0C9BEB1F7427 /* FakeNotificationCenter.swift in Sources */,
+				DB62F1AF653D661F46D60177 /* InsightsEngineTests.swift in Sources */,
+				411A261961426301C57D8C75 /* MigrationsTests.swift in Sources */,
+				526E181FB3764082A6AD5E11 /* ModelCodableTests.swift in Sources */,
+				F2F107F6E8D8FA7187BADE51 /* StatePersistenceTests.swift in Sources */,
+				9920C8BFB6209EA9A24F15C5 /* TimelineEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EB1947AAA2D03B20CE013D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B6453C8C24A66EF38FC0EA /* AppStore.swift in Sources */,
+				EA0FB1B0DC6E811E069ED071 /* BackupControls.swift in Sources */,
+				EE739DA23BADF6B3062BED3E /* CheckInReminder.swift in Sources */,
+				41C14B7CA74DF635DAFEFA0E /* CheckInView.swift in Sources */,
+				EAAE4442B65FD55F85DECA08 /* Components.swift in Sources */,
+				86AE4C5E61BAA6D8CFA38771 /* DaylilyApp.swift in Sources */,
+				42F025D02136EC042ACE6613 /* HomeView.swift in Sources */,
+				BA1E410A750E612D1F485241 /* InsightsEngine.swift in Sources */,
+				2DABFE8F9B194C93F9858759 /* InsightsView.swift in Sources */,
+				7AB51657DEEEA106C6CD2046 /* LibraryView.swift in Sources */,
+				E01BCD456D93EE7040CB14E3 /* Migrations.swift in Sources */,
+				75BF22C4DBA9B3725E690BBA /* Models.swift in Sources */,
+				AD6BADF93F5E3DA679D37362 /* NotificationPresenter.swift in Sources */,
+				02FBE0A42A47DB427352E4F5 /* RootView.swift in Sources */,
+				CDE4511AA53DBA9C78B9850E /* StatePersistence.swift in Sources */,
+				DB0102B4E8DB9B8159E1B9E2 /* Theme.swift in Sources */,
+				36441A89060A43B63E6DC6ED /* TimelineEngine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F08223719F710A6937CE445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5BD1EFD0D4216AD896AA790 /* GraphReorderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43F6DD618FDFD639D124DCD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E4DC8C60E8AA926858F3ED6 /* Daylily */;
+			targetProxy = B4AC8DE25F8AD041F06E37B0 /* PBXContainerItemProxy */;
+		};
+		A0E928597FEA8228B771016D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E4DC8C60E8AA926858F3ED6 /* Daylily */;
+			targetProxy = B2A8D93752103FB536B9BB48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2889287A0619390B91511245 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Daylily;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		61E38AA4374836F356D67191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily.tests;
+				PRODUCT_NAME = DaylilyTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daylily.app/Daylily";
+			};
+			name = Release;
+		};
+		73A8AF5EB5C2005B0BCF3209 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = Daylily;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		93B58A154A4BC149C07BAB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily.uitests;
+				PRODUCT_NAME = DaylilyUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Daylily;
+			};
+			name = Release;
+		};
+		99D06C0D9B61540A8D4C0535 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily.tests;
+				PRODUCT_NAME = DaylilyTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daylily.app/Daylily";
+			};
+			name = Debug;
+		};
+		9E2BD612FF87300AD6A8FD42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Daylily;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C360924E2849EBB69909FBAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Daylily;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EA23CD0FC558777E1AC5DD25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitexperiments.daylily.uitests;
+				PRODUCT_NAME = DaylilyUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Daylily;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		480F4B21C5ABC07CD8E4AC43 /* Build configuration list for PBXNativeTarget "DaylilyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99D06C0D9B61540A8D4C0535 /* Debug */,
+				61E38AA4374836F356D67191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8B6875E4996BBE91466DB2E6 /* Build configuration list for PBXProject "Daylily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2889287A0619390B91511245 /* Debug */,
+				73A8AF5EB5C2005B0BCF3209 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B8E9F72B134B849A96FDA0EC /* Build configuration list for PBXNativeTarget "Daylily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E2BD612FF87300AD6A8FD42 /* Debug */,
+				C360924E2849EBB69909FBAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E6CBC25676F5AB7294DD4589 /* Build configuration list for PBXNativeTarget "DaylilyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA23CD0FC558777E1AC5DD25 /* Debug */,
+				93B58A154A4BC149C07BAB8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D1CF4A80222DCC3750E6EA38 /* Project object */;
+}
