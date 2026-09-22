@@ -56,7 +56,7 @@ final class GraphReorderUITests: XCTestCase {
         app.tabBars.buttons["Patterns"].tap()
         app.buttons["Create graph"].tap()
         XCTAssertTrue(app.navigationBars[graphEditorTitle].waitForExistence(timeout: 5))
-        app.buttons["Mood, not selected"].tap()
+        app.buttons["Happiness, not selected"].tap()
         app.buttons["\(activityName), not selected"].tap()
         app.buttons["Create"].tap()
 
