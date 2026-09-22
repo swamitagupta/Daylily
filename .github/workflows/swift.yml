@@ -1,22 +1,76 @@
-# This workflow will build a Swift project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
-
-name: Swift
+name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
-  build:
-
+  test:
     runs-on: macos-latest
-
+    timeout-minutes: 30
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcrun simctl list runtimes
+
+      # Runners vary in which iOS runtime they ship, and a bare
+      # `name=iPhone 16` resolves to the latest OS, which may not carry
+      # that model. Ask the runner what it actually has.
+      - name: Pick an available iPhone simulator
+        id: sim
+        run: |
+          udid=$(xcrun simctl list devices available --json | python3 -c "import json,sys;d=json.load(sys.stdin)['devices'];print(next(x['udid'] for rt in sorted(d,reverse=True) if 'iOS' in rt for x in d[rt] if x['name'].startswith('iPhone')))")
+          echo "simulator: $udid"
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
+      # CODE_SIGNING_ALLOWED=NO: the runner carries no certificates, and
+      # CODE_SIGN_STYLE=Automatic still tries to resolve an identity before
+      # falling back to the ad-hoc signing a simulator build actually needs.
+      - name: Build and test
+        id: test
+        continue-on-error: true
+        run: |
+          set +e
+          xcodebuild test \
+            -scheme Daylily \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee /tmp/xcodebuild.log
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      # Say what actually ran, so a green tick can't mean "nothing executed".
+      - name: Test summary
+        if: always()
+        run: |
+          [ -f /tmp/xcodebuild.log ] || exit 0
+          {
+            echo "### Tests"
+            echo '```'
+            grep -E "Executed [0-9]+ tests?|\*\* TEST" /tmp/xcodebuild.log | sort -u | tail -12
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          grep -E "Executed [0-9]+ tests?" /tmp/xcodebuild.log | sort -u | cut -c1-200 \
+            | while IFS= read -r line; do echo "::notice::$line"; done
+
+      # Job logs need repo admin to download, but step annotations do not,
+      # so surface the real error there rather than leaving a bare exit code.
+      - name: Report failure
+        if: steps.test.outputs.exit != '' && steps.test.outputs.exit != '0'
+        run: |
+          echo "xcodebuild exited ${{ steps.test.outputs.exit }}"
+          {
+            echo "### xcodebuild failed (exit ${{ steps.test.outputs.exit }})"
+            echo '```'
+            tail -40 /tmp/xcodebuild.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          grep -E "error:|Testing failed|build commands failed|requires a development team|No signing certificate|Unable to find|Cannot test" /tmp/xcodebuild.log \
+            | sort -u | head -12 | cut -c1-200 | while IFS= read -r line; do
+              echo "::error::$line"
+            done
+          exit 1
