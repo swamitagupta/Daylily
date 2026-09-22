@@ -59,9 +59,15 @@ final class GraphReorderUITests: XCTestCase {
         app.buttons["Happiness, not selected"].tap()
         app.buttons["\(activityName), not selected"].tap()
         app.buttons["Create"].tap()
+        XCTAssertFalse(app.navigationBars[graphEditorTitle].waitForExistence(timeout: 3),
+                       "the graph editor should close once Create is tapped")
 
         let reorder = app.buttons["Reorder"]
         XCTAssertTrue(reorder.waitForExistence(timeout: 10), "reorder is offered once there are graphs to order")
+        XCTAssertTrue(reorder.isHittable,
+                      "Reorder must be tappable: frame=\(reorder.frame) app=\(app.frame) "
+                        + "editorOpen=\(app.navigationBars[graphEditorTitle].exists) "
+                        + "keyboards=\(app.keyboards.count) sheets=\(app.sheets.count)")
         let before = cardLabels(app)
         XCTAssertGreaterThan(before.count, 1, "more than one graph to order")
         let names = cardNames(app)
