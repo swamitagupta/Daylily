@@ -80,8 +80,8 @@ final class MigrationsTests: XCTestCase {
 
     func testSeedStarterLibraryMatchesShippedDefaults() {
         let starter = Migrations.seedStarterLibrary()
-        XCTAssertEqual(starter.activities.map(\.name), ["Office", "Tennis", "Morning walk"])
-        XCTAssertEqual(starter.outcomes.map(\.name), ["Happiness", "Calm", "Energy"])
+        XCTAssertEqual(starter.activities.map(\.name), ["Walk"])
+        XCTAssertEqual(starter.outcomes.map(\.name), ["Mood"])
         XCTAssertFalse(Migrations.migratingEmojiSymbols(in: starter.activities)
             .contains { $0.symbol.isEmojiChoice })
     }
@@ -95,7 +95,7 @@ final class MigrationsTests: XCTestCase {
         XCTAssertEqual(seeded.count, 21)
         XCTAssertTrue(seeded.values.allSatisfy { $0.isDemo && $0.submittedAt != nil })
         XCTAssertTrue(seeded.values.allSatisfy {
-            $0.outcomeRatings.count == 3 && $0.outcomeRatings.values.allSatisfy { (1...5).contains($0) }
+            $0.outcomeRatings.count == 1 && $0.outcomeRatings.values.allSatisfy { (1...5).contains($0) }
         })
         XCTAssertTrue(seeded.values.contains { !$0.completedActivityIDs.isEmpty },
                       "demo history must show some recorded activity")
@@ -131,14 +131,13 @@ final class MigrationsTests: XCTestCase {
         let outcomeIDs = Set(starter.outcomes.map(\.id))
         let activityIDs = Set(starter.activities.map(\.id))
 
-        XCTAssertEqual(graphs.count, 2)
+        XCTAssertEqual(graphs.count, 1)
         XCTAssertTrue(graphs.allSatisfy(\.isDemo))
         XCTAssertTrue(graphs.allSatisfy { $0.outcomeIDs.count == 1 })
         XCTAssertTrue(graphs.allSatisfy { graph in
             graph.outcomeIDs.allSatisfy(outcomeIDs.contains)
                 && graph.activityIDs.allSatisfy(activityIDs.contains)
         })
-        XCTAssertEqual(Set(graphs.map(\.id)).count, 2, "each sample graph needs its own identity")
     }
 
     func testDemoGraphsFollowTheSeededHistory() {

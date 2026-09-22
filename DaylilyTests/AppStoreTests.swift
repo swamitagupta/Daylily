@@ -17,7 +17,7 @@ final class AppStoreTests: XCTestCase {
         let store = makeStore(makeDefaults())
 
         XCTAssertEqual(store.demoEntryCount, 21)
-        XCTAssertEqual(store.savedGraphs.count, 2)
+        XCTAssertEqual(store.savedGraphs.count, 1)
         XCTAssertTrue(store.savedGraphs.allSatisfy(\.isDemo))
         // A sample graph whose items don't resolve draws nothing.
         let outcomeIDs = Set(store.outcomes.map(\.id))
@@ -70,13 +70,13 @@ final class AppStoreTests: XCTestCase {
     func testReorderingGraphsIsKeptAcrossRelaunch() throws {
         let defaults = makeDefaults()
         let store = makeStore(defaults)
-        let outcome = try XCTUnwrap(store.activeOutcomes.dropFirst().first)
-        let activity = try XCTUnwrap(store.activeActivities.dropFirst().first)
+        let outcome = try XCTUnwrap(store.activeOutcomes.first)
+        let activity = try XCTUnwrap(store.activeActivities.first)
         store.addGraph(outcomeIDs: [outcome.id], activityIDs: [activity.id])
 
         let before = store.savedGraphs.map(\.id)
         let newest = try XCTUnwrap(before.first)
-        XCTAssertEqual(before.count, 3, "two sample graphs plus the new one")
+        XCTAssertEqual(before.count, 2, "the sample graph plus the new one")
 
         store.moveGraph(id: newest, by: 1)
         let stepped = store.savedGraphs.map(\.id)

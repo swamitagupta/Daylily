@@ -38,12 +38,32 @@ final class GraphReorderUITests: XCTestCase {
     func testReorderingMovesOneCardWithoutDisturbingThePage() {
         let app = XCUIApplication()
         app.launch()
+
+        // The starter set is one activity and one outcome, and the editor refuses a
+        // graph identical to one you already have, so a second card needs a second
+        // activity. Name it per run: a simulator holding earlier state must still
+        // yield a distinct activity, and therefore a distinct graph.
+        let activityName = "Read \(Int(Date().timeIntervalSince1970) % 100000)"
+
+        app.tabBars.buttons["Customize"].tap()
+        app.buttons.matching(NSPredicate(format: "label == 'Add'")).element(boundBy: 0).tap()
+        XCTAssertTrue(app.navigationBars["Add activity"].waitForExistence(timeout: 5))
+        let nameField = app.textFields["e.g. Read"]
+        nameField.tap()
+        nameField.typeText(activityName)
+        app.buttons["Save"].tap()
+
         app.tabBars.buttons["Patterns"].tap()
+        app.buttons["Create graph"].tap()
+        XCTAssertTrue(app.navigationBars[graphEditorTitle].waitForExistence(timeout: 5))
+        app.buttons["Mood, not selected"].tap()
+        app.buttons["\(activityName), not selected"].tap()
+        app.buttons["Create"].tap()
 
         let reorder = app.buttons["Reorder"]
         XCTAssertTrue(reorder.waitForExistence(timeout: 10), "reorder is offered once there are graphs to order")
         let before = cardLabels(app)
-        XCTAssertGreaterThan(before.count, 1, "the seed provides more than one graph")
+        XCTAssertGreaterThan(before.count, 1, "more than one graph to order")
         let names = cardNames(app)
         let placed = titlePositions(app, names)
 
