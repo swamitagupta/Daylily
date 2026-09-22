@@ -72,20 +72,21 @@ enum Migrations {
     // MARK: Starter library
 
     static func seedStarterLibrary() -> (activities: [Activity], outcomes: [Outcome]) {
-        let walk = Activity(name: "Walk", symbol: "figure.walk", tintHex: "E39452")
-        let mood = Outcome(name: "Mood", symbol: "face.smiling.fill", lowLabel: "Low", highLabel: "High", tintHex: "E6A13A")
+        let tennis = Activity(name: "Play Tennis", symbol: "tennis.racket", tintHex: "4C9A72")
+        let happiness = Outcome(name: "Happiness", symbol: "face.smiling.fill", lowLabel: "Low", highLabel: "High", tintHex: "E39452")
+        let energy = Outcome(name: "Energy", symbol: "bolt.fill", lowLabel: "Drained", highLabel: "Energized", tintHex: "D66B69")
 
-        return ([walk], [mood])
+        return ([tennis], [happiness, energy])
     }
 
     // MARK: Demo history (call site stays DEBUG-only)
 
-    /// The sample graph that makes a first run legible: it compares the starter
+    /// The sample graphs that make a first run legible: each compares one starter
     /// outcome against the starter activity over the seeded history, so a new
     /// user sees what a graph *is* without having to build one first. Marked
     /// `isDemo` so removing sample data removes exactly what seeding added.
     static func demoGraphs(activities: [Activity], outcomes: [Outcome]) -> [SavedGraph] {
-        [("Mood", "Walk")].compactMap { outcomeName, activityName in
+        [("Happiness", "Play Tennis"), ("Energy", "Play Tennis")].compactMap { outcomeName, activityName in
             guard let outcome = outcomes.first(where: { $0.name == outcomeName }),
                   let activity = activities.first(where: { $0.name == activityName }) else { return nil }
             return SavedGraph(outcomeIDs: [outcome.id], activityIDs: [activity.id], isDemo: true)
@@ -99,24 +100,28 @@ enum Migrations {
                             existing: [String: DailyEntry],
                             now: Date = .now, calendar: Calendar = .current) -> [String: DailyEntry] {
         guard !existing.values.contains(where: { $0.isDemo }),
-              let walk = activities.first(where: { $0.name == "Walk" }),
-              let mood = outcomes.first(where: { $0.name == "Mood" }) else { return [:] }
+              let tennis = activities.first(where: { $0.name == "Play Tennis" }),
+              let happiness = outcomes.first(where: { $0.name == "Happiness" }),
+              let energy = outcomes.first(where: { $0.name == "Energy" }) else { return [:] }
 
         var seeded: [String: DailyEntry] = [:]
         for offset in 1...21 {
             guard let date = calendar.date(byAdding: .day, value: -offset, to: now),
                   existing[date.dayKey] == nil else { continue }
 
-            let weekday = calendar.component(.weekday, from: date)
-            // Walked most days, with enough misses to leave gaps in the line.
-            let walkDay = offset % 2 == 0 || weekday == 1 || offset % 5 == 0
+            // A couple of games a week, with quiet days between so the line has
+            // gaps rather than reading as a straight edge.
+            let played = offset % 3 == 0 || offset % 5 == 0
+            let smallVariation = offset % 4 == 0 ? 1 : 0
 
             var entry = DailyEntry(dateKey: date.dayKey)
-            if walkDay { entry.completedActivityIDs.insert(walk.id) }
+            if played { entry.completedActivityIDs.insert(tennis.id) }
 
-            let smallVariation = offset % 4 == 0 ? 1 : 0
-            entry.outcomeRatings[mood.id] = min(5, walkDay ? 4 + smallVariation : 2 + (offset % 2))
-            entry.note = offset == 3 ? "Demo: a walk after work felt restorative." : ""
+            // Happiness tracks the tennis fairly closely; energy drifts a little
+            // more on its own, so the two sample graphs are not carbon copies.
+            entry.outcomeRatings[happiness.id] = min(5, played ? 4 + smallVariation : 2 + (offset % 2))
+            entry.outcomeRatings[energy.id] = min(5, played ? 3 + (offset % 2) + smallVariation : 1 + (offset % 3))
+            entry.note = offset == 3 ? "Demo: tennis after work felt good." : ""
             entry.submittedAt = calendar.date(bySettingHour: 20, minute: 0, second: 0, of: date)
             entry.isDemo = true
             seeded[date.dayKey] = entry
