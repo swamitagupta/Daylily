@@ -12,7 +12,7 @@ struct HomeView: View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 24) {
                     header
-                    if store.hasDemoData { demoBanner }
+                    if store.hasDemoData && !hidesPreviewBanner { demoBanner }
                     checkInCard
                     MonthCalendarView(onRecorded: { selectedDay = CalendarDay(date: $0) },
                                       onUnrecorded: { date in
@@ -141,6 +141,17 @@ struct HomeView: View {
         case 12..<18: return String(localized: "Good afternoon")
         default: return String(localized: "Good evening")
         }
+    }
+
+    /// Capture-only. The preview banner is a debug-build affordance and the README
+    /// screenshots are taken without it, so give the capture a way to ask. Never
+    /// true in a release build, and never true unless the variable is set.
+    private var hidesPreviewBanner: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["DAYLILY_HIDE_PREVIEW_BANNER"] == "1"
+        #else
+        false
+        #endif
     }
 
 }
