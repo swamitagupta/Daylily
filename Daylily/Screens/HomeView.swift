@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(AppStore.self) private var store
+    @Environment(NotificationPresenter.self) private var notifier
     @State private var showCheckIn = false
     @State private var checkInDate = Date.now
     @State private var selectedDay: CalendarDay?
@@ -39,6 +40,10 @@ struct HomeView: View {
             } message: {
                 Text("This removes only sample check-ins. Your own entries and tracked items stay.")
             }
+            .onAppear { openCheckInIfRequested() }
+            .onChange(of: notifier.pendingRoute) { _, route in
+                if route == .checkIn { openCheckInIfRequested() }
+            }
         }
     }
 
@@ -63,6 +68,19 @@ struct HomeView: View {
         .padding(14)
         .background(Theme.softLavender.opacity(0.65))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    /// Opens today's sheet for a reminder tap. The clock is re-based first: a
+    /// delivered nudge can be tapped the next morning, when a stale
+    /// `store.now` would otherwise open yesterday. Any pushed day detail is
+    /// popped so the sheet fronts the dashboard it belongs to.
+    private func openCheckInIfRequested() {
+        guard notifier.pendingRoute == .checkIn else { return }
+        notifier.pendingRoute = nil
+        store.refreshClock()
+        selectedDay = nil
+        checkInDate = store.now
+        showCheckIn = true
     }
 
     private var header: some View {
@@ -177,6 +195,55 @@ private struct MonthCalendarView: View {
     /// fit on one row.
     private var markerGlyphSize: CGFloat { min(markerSize, 12) }
     private var overflowGlyphSize: CGFloat { min(overflowSize, 10) }
+    /// A day cell is one seventh of the card: 40.1pt on the 375pt phone, the
+    /// narrowest layout the app ships on. Catalogue glyphs run up to ~12pt
+    /// advance, so a full row is 3×12+2×2.5 = 41pt at the 12pt text cap and
+    /// three glyphs plus anything else would clip. Extra activities therefore
+    /// wrap to a second row (six-slot display limit), and once a day exceeds
+    /// it the overflow day shows only four glyphs: the chip takes a second-row
+    /// slot beside one glyph (12+2.5+19 ≈ 34pt for a two-digit "+N"), which is
+    /// the widest marker-plus-chip row that cannot clip on any phone.
+    private let markersPerRow = 3
+    private let markerRowCount = 2
+    private var markerCapacity: Int { markersPerRow * markerRowCount }
+    /// A glyph line is taller than its font size at large text sizes; rows
+    /// reserve room so two of them never collide.
+    private var markerRowHeight: CGFloat { max(10, markerGlyphSize + 2) }
+    /// Day cells anchor to the top (the 7pt is where a 35pt row centered in
+    /// the old 49pt cell sat), so the numeral baseline is identical whether a
+    /// day carries no markers, one row, or two.
+    private let cellTopPadding: CGFloat = 7
+    /// Numeral line + spacing + two full marker rows, with a little air.
+    private let cellMinHeight: CGFloat = 56
+
+    private enum MarkerSlot: Identifiable {
+        case marker(Activity)
+        case overflow(Int)
+        var id: String {
+            switch self {
+            case .marker(let activity): return activity.id.uuidString
+            case .overflow(let count): return "overflow-\(count)"
+            }
+        }
+    }
+
+    private func markerRows(_ completed: [Activity]) -> [[MarkerSlot]] {
+        let slots: [MarkerSlot]
+        if completed.count > markerCapacity {
+            let shown = completed.prefix(markerCapacity - 2)
+            slots = shown.map { MarkerSlot.marker($0) } + [.overflow(completed.count - shown.count)]
+        } else {
+            slots = completed.map { MarkerSlot.marker($0) }
+        }
+        var rows: [[MarkerSlot]] = []
+        var start = 0
+        while start < slots.count {
+            rows.append(Array(slots[start..<min(start + markersPerRow, slots.count)]))
+            start += markersPerRow
+        }
+        return rows
+    }
+
     private var legendColumns: [GridItem] {
         Array(repeating: GridItem(.flexible(), spacing: 12),
               count: dynamicTypeSize.isAccessibilitySize ? 1 : 2)
@@ -332,21 +399,28 @@ private struct MonthCalendarView: View {
                         .foregroundStyle((entry?.isDemo ?? false) ? Theme.lavender : Theme.ink)
                         .lineLimit(1)
                         .minimumScaleFactor(0.55)
-                    HStack(spacing: 2.5) {
-                        ForEach(Array(completed.prefix(3))) { activity in
-                            Image(systemName: activity.symbol)
-                                .font(.system(size: markerGlyphSize, weight: .semibold))
-                                .foregroundStyle(Color(hex: activity.tintHex))
-                        }
-                        if completed.count > 3 {
-                            Text("+\(completed.count - 3)")
-                                .font(.system(size: overflowGlyphSize, weight: .bold))
-                                .foregroundStyle(Theme.secondaryInk)
+                    VStack(spacing: 2.5) {
+                        ForEach(Array(markerRows(completed).enumerated()), id: \.offset) { _, row in
+                            HStack(spacing: 2.5) {
+                                ForEach(row) { slot in
+                                    switch slot {
+                                    case .marker(let activity):
+                                        Image(systemName: activity.symbol)
+                                            .font(.system(size: markerGlyphSize, weight: .semibold))
+                                            .foregroundStyle(Color(hex: activity.tintHex))
+                                    case .overflow(let count):
+                                        Text("+\(count)")
+                                            .font(.system(size: overflowGlyphSize, weight: .bold))
+                                            .foregroundStyle(Theme.secondaryInk)
+                                    }
+                                }
+                            }
+                            .frame(height: markerRowHeight)
                         }
                     }
-                    .frame(height: 10)
                 }
-                .frame(maxWidth: .infinity, minHeight: 49)
+                .padding(.top, cellTopPadding)
+                .frame(maxWidth: .infinity, minHeight: cellMinHeight, alignment: .top)
                 .background(isToday ? Theme.softLavender : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
                 .contentShape(Rectangle())
@@ -355,7 +429,7 @@ private struct MonthCalendarView: View {
             .disabled(isFuture)
             .accessibilityLabel(dayAccessibility(date: date, entry: entry, activities: completed))
         } else {
-            Color.clear.frame(maxWidth: .infinity, minHeight: 49)
+            Color.clear.frame(maxWidth: .infinity, minHeight: cellMinHeight)
                 .accessibilityHidden(true)
         }
     }

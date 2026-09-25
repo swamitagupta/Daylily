@@ -3,14 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		02FBE0A42A47DB427352E4F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E518F2E2ACFF98F3C43008A5 /* RootView.swift */; };
+		0EA69D11F0804ECBDD76A008 /* IconSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B801A947AB61C1AC1E4C7B /* IconSuggestionTests.swift */; };
 		2867787DEBECC1F1B2207874 /* CheckInReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */; };
 		2DABFE8F9B194C93F9858759 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A07283787C9F3CF8D31F26 /* InsightsView.swift */; };
+		3036A3D48B43A66B8E4FA1AF /* IconCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9B8F72BD6FAF022F42619 /* IconCatalog.swift */; };
 		36441A89060A43B63E6DC6ED /* TimelineEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */; };
+		3B3EE5F79A069B98F1BD267C /* CalendarDensityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A301C850B184F9F819B8B2 /* CalendarDensityUITests.swift */; };
 		411A261961426301C57D8C75 /* MigrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */; };
 		41C14B7CA74DF635DAFEFA0E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E140395AEBBAFB4287039E /* CheckInView.swift */; };
 		42F025D02136EC042ACE6613 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B460F5549D0601364D4D04A /* HomeView.swift */; };
@@ -19,17 +22,21 @@
 		6AFCF4E4BCB32D402F2139BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D89468327F8FA8E0E72609 /* Assets.xcassets */; };
 		75BF22C4DBA9B3725E690BBA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2E2B86F7F28639FAEB1F /* Models.swift */; };
 		7AB51657DEEEA106C6CD2046 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B5A41C9FF4CF8D6058D48 /* LibraryView.swift */; };
+		85299959B1F341B6DB703013 /* ReminderTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CD707C3576AF52DD1D675 /* ReminderTapUITests.swift */; };
 		86AE4C5E61BAA6D8CFA38771 /* DaylilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5E7ABA9D22ACA3045CD59 /* DaylilyApp.swift */; };
+		875EA24F820D0E69D3C9AF2E /* IconSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD85FC44D7A7748459ED864 /* IconSuggestion.swift */; };
 		90C1E45D896F0C9BEB1F7427 /* FakeNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */; };
 		9920C8BFB6209EA9A24F15C5 /* TimelineEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99712D6DA9BBFA8637B45989 /* TimelineEngineTests.swift */; };
 		A4B6453C8C24A66EF38FC0EA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B418C7622445700DE1E70D77 /* AppStore.swift */; };
 		A5BD1EFD0D4216AD896AA790 /* GraphReorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */; };
 		AD6BADF93F5E3DA679D37362 /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53808903CD1479F98A87D327 /* NotificationPresenter.swift */; };
 		BA1E410A750E612D1F485241 /* InsightsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EDE8595243E9539C55074 /* InsightsEngine.swift */; };
+		BBB9917345EF169C38B0E185 /* PaletteSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235626AFB3A2714B41932465 /* PaletteSuggestion.swift */; };
 		CDE4511AA53DBA9C78B9850E /* StatePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1CD2E32841DE832334A9F /* StatePersistence.swift */; };
 		DB0102B4E8DB9B8159E1B9E2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93C84F31C6E88D8969385ED /* Theme.swift */; };
 		DB62F1AF653D661F46D60177 /* InsightsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */; };
 		E01BCD456D93EE7040CB14E3 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B15AC9DF645FA742796870 /* Migrations.swift */; };
+		E47A81681CBEA7C0DBE40F81 /* IconSuggestionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670F99E40E00FE36EE6695DF /* IconSuggestionUITests.swift */; };
 		EA0FB1B0DC6E811E069ED071 /* BackupControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9BA1EEAD257B848B8AC47 /* BackupControls.swift */; };
 		EAAE4442B65FD55F85DECA08 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211CB47BD91F2ABE0B644B14 /* Components.swift */; };
 		EE739DA23BADF6B3062BED3E /* CheckInReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */; };
@@ -55,29 +62,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12B801A947AB61C1AC1E4C7B /* IconSuggestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSuggestionTests.swift; sourceTree = "<group>"; };
 		1B460F5549D0601364D4D04A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		211CB47BD91F2ABE0B644B14 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsEngineTests.swift; sourceTree = "<group>"; };
+		235626AFB3A2714B41932465 /* PaletteSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteSuggestion.swift; sourceTree = "<group>"; };
 		2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEngine.swift; sourceTree = "<group>"; };
 		32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationsTests.swift; sourceTree = "<group>"; };
 		3368A0CBEFCFE6C06CD41793 /* DaylilyUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DaylilyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInReminder.swift; sourceTree = "<group>"; };
-		37E83AD27D7C340F9CBF8A5C /* Daylily.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Daylily.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37E83AD27D7C340F9CBF8A5C /* Daylily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daylily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA9BA1EEAD257B848B8AC47 /* BackupControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupControls.swift; sourceTree = "<group>"; };
 		53808903CD1479F98A87D327 /* NotificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
 		59D89468327F8FA8E0E72609 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B6B5A41C9FF4CF8D6058D48 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		5DEC2E2B86F7F28639FAEB1F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		65F1CD2E32841DE832334A9F /* StatePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePersistence.swift; sourceTree = "<group>"; };
+		670F99E40E00FE36EE6695DF /* IconSuggestionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSuggestionUITests.swift; sourceTree = "<group>"; };
 		674B1DF04E2E7D383B854679 /* StatePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePersistenceTests.swift; sourceTree = "<group>"; };
 		78F998CBCB40884EB405AFC1 /* ModelCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCodableTests.swift; sourceTree = "<group>"; };
 		8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNotificationCenter.swift; sourceTree = "<group>"; };
 		82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInReminderTests.swift; sourceTree = "<group>"; };
-		8470E03D3ABB2B6CEE64544A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		8470E03D3ABB2B6CEE64544A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		84A07283787C9F3CF8D31F26 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphReorderUITests.swift; sourceTree = "<group>"; };
 		97E140395AEBBAFB4287039E /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		99712D6DA9BBFA8637B45989 /* TimelineEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEngineTests.swift; sourceTree = "<group>"; };
+		9BD85FC44D7A7748459ED864 /* IconSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSuggestion.swift; sourceTree = "<group>"; };
+		9D8CD707C3576AF52DD1D675 /* ReminderTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTapUITests.swift; sourceTree = "<group>"; };
+		A0A301C850B184F9F819B8B2 /* CalendarDensityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDensityUITests.swift; sourceTree = "<group>"; };
 		A0B15AC9DF645FA742796870 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		AAE822927E0C649DF459B812 /* DaylilyTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DaylilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD5E7ABA9D22ACA3045CD59 /* DaylilyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylilyApp.swift; sourceTree = "<group>"; };
@@ -86,6 +99,7 @@
 		D28EDE8595243E9539C55074 /* InsightsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsEngine.swift; sourceTree = "<group>"; };
 		D93C84F31C6E88D8969385ED /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E518F2E2ACFF98F3C43008A5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F2B9B8F72BD6FAF022F42619 /* IconCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCatalog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -118,10 +132,13 @@
 				B418C7622445700DE1E70D77 /* AppStore.swift */,
 				3680FE6B51DE629D8C04F99A /* CheckInReminder.swift */,
 				211CB47BD91F2ABE0B644B14 /* Components.swift */,
+				F2B9B8F72BD6FAF022F42619 /* IconCatalog.swift */,
+				9BD85FC44D7A7748459ED864 /* IconSuggestion.swift */,
 				D28EDE8595243E9539C55074 /* InsightsEngine.swift */,
 				A0B15AC9DF645FA742796870 /* Migrations.swift */,
 				5DEC2E2B86F7F28639FAEB1F /* Models.swift */,
 				53808903CD1479F98A87D327 /* NotificationPresenter.swift */,
+				235626AFB3A2714B41932465 /* PaletteSuggestion.swift */,
 				65F1CD2E32841DE832334A9F /* StatePersistence.swift */,
 				D93C84F31C6E88D8969385ED /* Theme.swift */,
 				2A6FF8F29A4CAD6C62C972DF /* TimelineEngine.swift */,
@@ -144,7 +161,10 @@
 		68258570E5D94C52DD54371F /* DaylilyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A0A301C850B184F9F819B8B2 /* CalendarDensityUITests.swift */,
 				8940C7732A1C07CEFE159C4A /* GraphReorderUITests.swift */,
+				670F99E40E00FE36EE6695DF /* IconSuggestionUITests.swift */,
+				9D8CD707C3576AF52DD1D675 /* ReminderTapUITests.swift */,
 			);
 			path = DaylilyUITests;
 			sourceTree = "<group>";
@@ -165,6 +185,7 @@
 				B370D1CE7F27238F67A87C41 /* AppStoreTests.swift */,
 				82C8C67FC4479B2520E15683 /* CheckInReminderTests.swift */,
 				8285F58C7F561D756965D6EF /* FakeNotificationCenter.swift */,
+				12B801A947AB61C1AC1E4C7B /* IconSuggestionTests.swift */,
 				22D75119CAB02393997F6EDD /* InsightsEngineTests.swift */,
 				32F6AC02AEEE67DA0E58496F /* MigrationsTests.swift */,
 				78F998CBCB40884EB405AFC1 /* ModelCodableTests.swift */,
@@ -258,7 +279,6 @@
 			);
 			mainGroup = 2A9BA8673A975563436A0613;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 54;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -289,6 +309,7 @@
 				F116AA766DFD2E515E4DACDF /* AppStoreTests.swift in Sources */,
 				2867787DEBECC1F1B2207874 /* CheckInReminderTests.swift in Sources */,
 				90C1E45D896F0C9BEB1F7427 /* FakeNotificationCenter.swift in Sources */,
+				0EA69D11F0804ECBDD76A008 /* IconSuggestionTests.swift in Sources */,
 				DB62F1AF653D661F46D60177 /* InsightsEngineTests.swift in Sources */,
 				411A261961426301C57D8C75 /* MigrationsTests.swift in Sources */,
 				526E181FB3764082A6AD5E11 /* ModelCodableTests.swift in Sources */,
@@ -308,12 +329,15 @@
 				EAAE4442B65FD55F85DECA08 /* Components.swift in Sources */,
 				86AE4C5E61BAA6D8CFA38771 /* DaylilyApp.swift in Sources */,
 				42F025D02136EC042ACE6613 /* HomeView.swift in Sources */,
+				3036A3D48B43A66B8E4FA1AF /* IconCatalog.swift in Sources */,
+				875EA24F820D0E69D3C9AF2E /* IconSuggestion.swift in Sources */,
 				BA1E410A750E612D1F485241 /* InsightsEngine.swift in Sources */,
 				2DABFE8F9B194C93F9858759 /* InsightsView.swift in Sources */,
 				7AB51657DEEEA106C6CD2046 /* LibraryView.swift in Sources */,
 				E01BCD456D93EE7040CB14E3 /* Migrations.swift in Sources */,
 				75BF22C4DBA9B3725E690BBA /* Models.swift in Sources */,
 				AD6BADF93F5E3DA679D37362 /* NotificationPresenter.swift in Sources */,
+				BBB9917345EF169C38B0E185 /* PaletteSuggestion.swift in Sources */,
 				02FBE0A42A47DB427352E4F5 /* RootView.swift in Sources */,
 				CDE4511AA53DBA9C78B9850E /* StatePersistence.swift in Sources */,
 				DB0102B4E8DB9B8159E1B9E2 /* Theme.swift in Sources */,
@@ -325,7 +349,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3EE5F79A069B98F1BD267C /* CalendarDensityUITests.swift in Sources */,
 				A5BD1EFD0D4216AD896AA790 /* GraphReorderUITests.swift in Sources */,
+				E47A81681CBEA7C0DBE40F81 /* IconSuggestionUITests.swift in Sources */,
+				85299959B1F341B6DB703013 /* ReminderTapUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C35DR2MHM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Daylily;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -544,6 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C35DR2MHM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Daylily;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

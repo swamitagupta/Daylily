@@ -285,6 +285,40 @@ final class AppStore {
         persistence.markDemoDismissed()
     }
 
+    #if DEBUG
+    /// Test seam: replaces the library with twelve activities and records
+    /// a ladder of twelve consecutive days carrying 1…12 check-ins, so
+    /// `CalendarDensityUITests` can render the calendar's full density —
+    /// two rows of markers plus a `+6` chip on the narrowest phone — from
+    /// a fresh launch with no externally injected state.
+    func debugSeedDenseCalendar() {
+        let symbols = ["figure.run", "figure.yoga", "bicycle", "mountain.2.fill",
+                       "person.2.fill", "gamecontroller.fill", "books.vertical.fill",
+                       "cup.and.saucer.fill", "music.note", "drop.fill",
+                       "paintpalette.fill", "camera.fill"]
+        let tints = ["6C63C7", "2F6E67", "B65A24", "8A5AA9", "3D6BA8", "C9A722"]
+        activities = symbols.enumerated().map { index, symbol in
+            Activity(name: "Activity \(index + 1)", symbol: symbol,
+                     tintHex: tints[index % tints.count])
+        }
+        insightSelection = InsightSelection(outcomeID: outcomes.first?.id,
+                                            activityIDs: Set(activities.prefix(2).map(\.id)))
+        let calendar = Calendar.current
+        var seeded: [String: DailyEntry] = [:]
+        for count in 1...symbols.count {
+            guard let day = calendar.date(byAdding: .day,
+                                          value: count - symbols.count - 1, to: now) else { continue }
+            seeded[day.dayKey] = DailyEntry(dateKey: day.dayKey,
+                                            completedActivityIDs: Set(activities.prefix(count).map(\.id)),
+                                            submittedAt: day)
+        }
+        entries = seeded
+        savedGraphs.removeAll { $0.isDemo }
+        persistence.markDemoDismissed()
+        save()
+    }
+    #endif
+
     func exportBackup() throws -> Data {
         guard !requiresRecovery else { throw BackupError.noData }
         let backup = DaylilyBackup(state: currentState)
