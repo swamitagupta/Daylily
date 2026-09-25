@@ -253,4 +253,21 @@ final class CheckInReminderTests: XCTestCase {
         XCTAssertFalse(store.remindersEnabled)
         XCTAssertEqual(center.removedPending, [CheckInReminder.identifier])
     }
+
+    // MARK: Tap routing
+
+    /// A tap on the delivered nudge resolves to the check-in sheet through the
+    /// `userInfo` the request carries; the presenter never sees the identifier.
+    func testDeliveredNudgeCarriesTheCheckInRoute() {
+        let request = CheckInReminder.request(fireDate: date(2025, 3, 10, 21, 30),
+                                              calendar: calendar)
+        XCTAssertEqual(NotificationRoute(userInfo: request.content.userInfo), .checkIn)
+    }
+
+    /// Payloads from another source — or from a build that never tagged them —
+    /// must resolve to no route rather than open a sheet on a guess.
+    func testUntaggedOrForeignPayloadResolvesToNoRoute() {
+        XCTAssertNil(NotificationRoute(userInfo: [:]))
+        XCTAssertNil(NotificationRoute(userInfo: [NotificationRoute.userInfoKey: "settings"]))
+    }
 }

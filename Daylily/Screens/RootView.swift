@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(AppStore.self) private var store
+    @Environment(NotificationPresenter.self) private var notifier
     @State private var selectedTab: Tab = .home
     @Environment(\.scenePhase) private var scenePhase
     @State private var showLocalRecoveryNotice = false
@@ -39,6 +40,11 @@ struct RootView: View {
             // A night spent locked away must not leave "today" on yesterday:
             // every return to the foreground re-bases the shared clock.
             if phase == .active { store.refreshClock() }
+        }
+        .onChange(of: notifier.pendingRoute) { _, route in
+            // A reminder tap opens the check-in sheet, which lives under Home;
+            // the tab has to come with it.
+            if route == .checkIn { selectedTab = .home }
         }
     }
 }

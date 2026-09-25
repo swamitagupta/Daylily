@@ -181,6 +181,9 @@ final class CheckInReminder {
         content.title = String(localized: "A minute for today?")
         content.body = String(localized: "Today's check-in is still open. Note what you did and how you felt.")
         content.sound = .default
+        // A tap on this nudge routes to today's check-in sheet; the views
+        // resolve it through `NotificationRoute` in `NotificationPresenter`.
+        content.userInfo = [NotificationRoute.userInfoKey: NotificationRoute.checkIn.rawValue]
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate),
             repeats: false)
