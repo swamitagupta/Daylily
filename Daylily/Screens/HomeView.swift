@@ -198,11 +198,12 @@ private struct MonthCalendarView: View {
     /// A day cell is one seventh of the card: 40.1pt on the 375pt phone, the
     /// narrowest layout the app ships on. Catalogue glyphs run up to ~12pt
     /// advance, so a full row is 3×12+2×2.5 = 41pt at the 12pt text cap and
-    /// three glyphs plus anything else would clip. Extra activities therefore
-    /// wrap to a second row (six-slot display limit), and once a day exceeds
-    /// it the overflow day shows only four glyphs: the chip takes a second-row
-    /// slot beside one glyph (12+2.5+19 ≈ 34pt for a two-digit "+N"), which is
-    /// the widest marker-plus-chip row that cannot clip on any phone.
+    /// three glyphs plus anything else would clip. Days past a single row
+    /// spread over two balanced rows (four is 2×2, not 3+1; five is 3+2),
+    /// and once a day exceeds the six-slot display limit it shows only four
+    /// glyphs: the chip takes a second-row slot beside one glyph (12+2.5+19 ≈
+    /// 34pt for a two-digit "+N"), the widest marker-plus-chip row that
+    /// cannot clip on any phone.
     private let markersPerRow = 3
     private let markerRowCount = 2
     private var markerCapacity: Int { markersPerRow * markerRowCount }
@@ -235,13 +236,9 @@ private struct MonthCalendarView: View {
         } else {
             slots = completed.map { MarkerSlot.marker($0) }
         }
-        var rows: [[MarkerSlot]] = []
-        var start = 0
-        while start < slots.count {
-            rows.append(Array(slots[start..<min(start + markersPerRow, slots.count)]))
-            start += markersPerRow
-        }
-        return rows
+        guard slots.count > markersPerRow else { return slots.isEmpty ? [] : [slots] }
+        let firstRowCount = (slots.count + 1) / 2
+        return [Array(slots[..<firstRowCount]), Array(slots[firstRowCount...])]
     }
 
     private var legendColumns: [GridItem] {
