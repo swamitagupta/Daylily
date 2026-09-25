@@ -304,17 +304,6 @@ private struct LibraryRow: Identifiable {
     let edit: LibraryView.LibrarySheet
 }
 
-private struct IconChoice: Identifiable {
-    let title: String
-    let symbol: String
-    var id: String { symbol }
-
-    init(_ title: String.LocalizationValue, _ symbol: String) {
-        self.title = String(localized: title)
-        self.symbol = symbol
-    }
-}
-
 private struct LibraryEditor: View {
     @Environment(AppStore.self) private var store
     @Environment(\.dismiss) private var dismiss
@@ -329,63 +318,24 @@ private struct LibraryEditor: View {
     @State private var showArchiveConfirmation = false
     @FocusState private var focusedField: Field?
 
+    /// A suggestion holds only until the user picks an icon for themselves;
+    /// from that tap on, the grid is the only thing that sets this.
+    @State private var hasPickedIcon = false
+    /// Non-nil while the shown icon came from the name, so the caption can say
+    /// so and can disappear the moment the user overrules it.
+    @State private var suggestedSymbol: String?
+
     private enum Field: Hashable { case name, low, high }
 
-    private let activityIcons: [IconChoice] = [
-        .init("Office", "building.2.fill"), .init("Tennis", "tennis.racket"),
-        .init("Walk", "figure.walk"), .init("Run", "figure.run"),
-        .init("Meditate", "figure.mind.and.body"), .init("Cycle", "bicycle"),
-        .init("Workout", "figure.strengthtraining.traditional"), .init("Swim", "figure.pool.swim"),
-        .init("Yoga", "figure.yoga"), .init("Hike", "mountain.2.fill"),
-        .init("Read", "books.vertical.fill"), .init("Write", "pencil.line"),
-        .init("Work", "laptopcomputer"), .init("Learn", "graduationcap.fill"),
-        .init("Coffee", "cup.and.saucer.fill"), .init("Cook", "frying.pan.fill"),
-        .init("Eat well", "fork.knife"), .init("Water", "drop.fill"),
-        .init("Create", "paintpalette.fill"), .init("Music", "music.note"),
-        .init("Clean", "sparkles"), .init("Sleep", "bed.double.fill"),
-        .init("Nature", "leaf.fill"), .init("Outside", "sun.max.fill"),
-        .init("Friends", "person.2.fill"), .init("Family", "house.fill"),
-        .init("Pet", "pawprint.fill"), .init("Travel", "airplane"),
-        .init("Drive", "car.fill"), .init("Games", "gamecontroller.fill"),
-        .init("Shopping", "bag.fill"), .init("Phone", "iphone"),
-        .init("Talk", "bubble.left.fill"), .init("Medicine", "cross.case.fill"),
-        .init("Self-care", "heart.fill"), .init("Rest", "moon.fill")
-    ]
-    private let outcomeIcons: [IconChoice] = [
-        .init("Happy", "face.smiling.fill"), .init("Calm", "wind"),
-        .init("Energy", "bolt.fill"), .init("Peaceful", "leaf.fill"),
-        .init("Loved", "heart.fill"), .init("Connected", "person.2.fill"),
-        .init("Confident", "star.fill"), .init("Motivated", "flame.fill"),
-        .init("Focused", "scope"), .init("Creative", "paintbrush.pointed.fill"),
-        .init("Grateful", "hands.sparkles.fill"), .init("Hopeful", "sun.max.fill"),
-        .init("Rested", "moon.stars.fill"), .init("Sleepy", "bed.double.fill"),
-        .init("Anxious", "waveform.path"), .init("Sad", "cloud.rain.fill"),
-        .init("Stressed", "exclamationmark.circle.fill"), .init("Angry", "bolt.heart.fill"),
-        .init("Thoughtful", "brain.head.profile"), .init("Uncertain", "questionmark.circle.fill"),
-        .init("Balanced", "circle.lefthalf.filled"), .init("Growing", "tree.fill"),
-        .init("Bright", "sparkles"), .init("Good", "checkmark.seal.fill")
-    ]
-
-    private struct ColorChoice: Identifiable {
-        let name: LocalizedStringKey
-        let hex: String
-        var id: String { hex }
-    }
-
-    private let colorChoices: [ColorChoice] = [
-        ColorChoice(name: "Purple", hex: "7258D6"),
-        ColorChoice(name: "Green", hex: "4C9A72"),
-        ColorChoice(name: "Orange", hex: "E39452"),
-        ColorChoice(name: "Rose", hex: "D66B69"),
-        ColorChoice(name: "Blue", hex: "4A8DA8")
-    ]
+    private typealias IconChoice = IconCatalog.IconChoice
+    private typealias ColorChoice = IconCatalog.ColorChoice
 
     init(target: LibraryView.LibrarySheet) {
         self.target = target
         let draft: (name: String, low: String, high: String, symbol: String, color: String)
         switch target {
-        case .addActivity: draft = ("", "Low", "High", "sparkles", "7258D6")
-        case .addOutcome: draft = ("", "Low", "High", "face.smiling.fill", "7258D6")
+        case .addActivity: draft = ("", "Low", "High", IconCatalog.defaultSymbol(for: .activity), IconCatalog.defaultHex)
+        case .addOutcome: draft = ("", "Low", "High", IconCatalog.defaultSymbol(for: .outcome), IconCatalog.defaultHex)
         case .editActivity(let activity): draft = (activity.name, "Low", "High", activity.symbol, activity.tintHex)
         case .editOutcome(let outcome): draft = (outcome.name, outcome.lowLabel, outcome.highLabel, outcome.symbol, outcome.tintHex)
         }
@@ -429,19 +379,55 @@ private struct LibraryEditor: View {
         return Array(repeating: GridItem(.flexible(), spacing: 10), count: count)
     }
 
+    private var catalogKind: IconCatalog.Kind {
+        kind == .activity ? .activity : .outcome
+    }
+
+    /// True only while the shown icon came from the name and the user has not
+    /// overruled it, so the subtitle stops claiming credit the moment they do.
+    private var showsSuggestionNote: Bool {
+        suggestedSymbol != nil && !hasPickedIcon
+    }
+
     private var icons: [IconChoice] {
-        let options = kind == .activity ? activityIcons : outcomeIcons
+        let options = IconCatalog.icons(for: catalogKind)
         return options.contains(where: { $0.symbol == symbol }) ? options : [IconChoice("Current icon", symbol)] + options
     }
 
     private var choices: [ColorChoice] {
-        colorChoices.contains { $0.hex == color }
-            ? colorChoices
-            : colorChoices + [ColorChoice(name: "Current color", hex: color)]
+        IconCatalog.colorChoices.contains { $0.hex == color }
+            ? IconCatalog.colorChoices
+            : IconCatalog.colorChoices + [ColorChoice(name: "Current color", hex: color)]
     }
 
     private var colorName: LocalizedStringKey {
-        choices.first { $0.hex == color }?.name ?? "Current color"
+        LocalizedStringKey(choices.first { $0.hex == color }?.name ?? String(localized: "Current color"))
+    }
+
+    /// Runs on every keystroke, so it waits for the name to stop changing:
+    /// without the pause the grid would flicker through the icons of half-typed
+    /// words. `task(id:)` cancels the previous wait, so only the last one ever
+    /// reaches the assignment below.
+    ///
+    /// Editing an existing item never suggests — its icon is the user's, and a
+    /// rename should not quietly replace a choice they made.
+    private func suggestIcon() async {
+        guard !isEditing, !hasPickedIcon else { return }
+
+        let query = trimmedName
+        guard query.count >= 2 else {
+            suggestedSymbol = nil
+            return
+        }
+
+        try? await Task.sleep(for: .milliseconds(300))
+        guard !Task.isCancelled, !hasPickedIcon else { return }
+
+        let suggested = IconSuggestion.symbol(for: query, kind: catalogKind)
+        suggestedSymbol = suggested
+        // A name the table cannot read falls back to the default rather than
+        // keeping the previous name's icon, so nothing shows a guess at nothing.
+        symbol = suggested ?? IconCatalog.defaultSymbol(for: catalogKind)
     }
 
     private var trimmedName: String { name.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -470,7 +456,15 @@ private struct LibraryEditor: View {
             .background(Theme.background.ignoresSafeArea())
             .navigationTitle("\(isEditing ? "Edit" : "Add") \(kind.word)")
             .navigationBarTitleDisplayMode(.inline)
-            .task { if !isEditing { focusedField = .name } }
+            .task {
+                guard !isEditing else { return }
+                focusedField = .name
+                // Spread the accents rather than starting every new item on the
+                // same one; tapping a swatch overrules it.
+                color = PaletteSuggestion.leastUsedHex(
+                    usedHexes: store.activeActivities.map(\.tintHex) + store.activeOutcomes.map(\.tintHex))
+            }
+            .task(id: name) { await suggestIcon() }
             .confirmationDialog("Archive \(name.trimmingCharacters(in: .whitespacesAndNewlines))?", isPresented: $showArchiveConfirmation) {
                 Button("Archive \(kind.word)") {
                     switch target {
@@ -553,11 +547,14 @@ private struct LibraryEditor: View {
 
     private var iconSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            SectionTitle(title: "Icon", detail: "Tap to choose")
+            SectionTitle(title: "Icon",
+                         detail: showsSuggestionNote ? "Suggested from the name. Tap to change"
+                                                     : "Tap to choose")
             LazyVGrid(columns: iconColumns, spacing: 12) {
                 ForEach(icons) { option in
                     Button {
                         symbol = option.symbol
+                        hasPickedIcon = true
                         focusedField = nil
                     } label: {
                         VStack(spacing: 6) {
